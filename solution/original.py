@@ -63,9 +63,8 @@ def solve_layer(u, n, k):
             u[n - k][t] = sqrt(- 2 * f((n - k) / n, t / n) / n / n + 4 * a ** 2 - b ** 2 - c ** 2 - d ** 2)
 
 
-def converge_solution(u, n):
+def converge_solution(u, n, *args, **kwargs):
     result = make_matrix(n)
-    diff = 0
     for t in range(0, n + 1):
         result[t][0] = 0.0
         result[t][n] = 0.0
@@ -77,6 +76,8 @@ def converge_solution(u, n):
             b = u[k + 1][m]
             c = u[k][m - 1]
             d = u[k][m + 1]
-            result[k][m] = sqrt(a * a + b * b + c * c + d * d - 2 * f(k / n, m / n) / n / n) / 2
-            diff += (result[k][m] - u[k][m] or 0) ** 2
+            result[k][m] = sqrt(a * a + b * b + c * c + d * d
+                                - 2 * f(k / n, m / n) / n / n) / 2
+
+    diff = np.linalg.norm(result - u, ord='fro')
     return result, diff

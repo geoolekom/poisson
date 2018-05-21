@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 fig = plt.figure(figsize=plt.figaspect(0.5))
+fig.canvas.set_window_title('График решений и ошибки')
 func_ax: Axes3D = fig.add_subplot(121, projection='3d', )
 func_ax.set_title('Точное и численное решение')
 func_ax.set_xlim(0, 1)

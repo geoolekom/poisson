@@ -63,7 +63,7 @@ def solve_layer(u, n, k):
             u[n - k][t] = f((n - k + 1) / n, t / n) / n / n + 4 * a - b - c - d
 
 
-def converge_solution(u, n):
+def converge_solution(u, n, *args, **kwargs):
     result = make_matrix(n)
     diff = 0
     for t in range(0, n + 1):

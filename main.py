@@ -1,5 +1,6 @@
 from plotting import function_plot, solution_plot, show_plot, err_plot
-from solution.base import solve_equation, exact_solution
+from solution.base import solve_equation
+from solution.original import exact_solution
 
 
 def main():
